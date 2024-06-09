@@ -1,5 +1,7 @@
 "use client";
+import { Console } from "@/components/Console";
 import { Editor } from "@/components/Editor";
+import { Button } from "@/components/ui/button";
 import {
   ResizableHandle,
   ResizablePanel,
@@ -8,8 +10,8 @@ import {
 import { EditorContext } from "@/contexts/editor";
 import { Play } from "lucide-react";
 import { use } from "react";
-import { Button } from "./ui/button";
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "./ui/hover-card";
+
 export const Question = () => {
   const editorContext = use(EditorContext);
   if (!editorContext) throw new Error("Editor context is not provided.");
@@ -23,14 +25,15 @@ export const Question = () => {
         <HoverCard>
           <HoverCardTrigger asChild={false}>
             <div>
-              <Button value={"default"} disabled>Submit</Button>
+              <Button value={"default"} disabled>
+                Submit
+              </Button>
             </div>
           </HoverCardTrigger>
           <HoverCardContent className="w-80">
             <h2>Login or Sign up to Submit Answer</h2>
           </HoverCardContent>
         </HoverCard>
-
       </div>
       <ResizablePanelGroup
         direction="horizontal"
@@ -54,10 +57,7 @@ export const Question = () => {
             </ResizablePanel>
             <ResizableHandle />
             <ResizablePanel defaultSize={25}>
-              <div className="flex h-full items-center justify-center p-6">
-                
-                {editorContext.answer && <div>{editorContext.answer}</div>}
-              </div>
+              <Console output={editorContext.answer} />
             </ResizablePanel>
           </ResizablePanelGroup>
         </ResizablePanel>
