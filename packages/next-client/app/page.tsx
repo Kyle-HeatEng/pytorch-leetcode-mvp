@@ -1,6 +1,6 @@
 "use client"
-import { Question } from "./components/question/Question";
-import { EditorProvider } from "./contexts/editor";
+import { Question } from "../components/Question";
+import { EditorProvider } from "../contexts/editor";
 
 
 

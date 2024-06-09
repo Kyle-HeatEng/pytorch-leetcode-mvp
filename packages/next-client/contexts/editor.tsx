@@ -1,6 +1,6 @@
+import { testQuestion } from '@/actions/testQuestion';
+import { EditorRef } from '@/components/Editor';
 import { createContext, useRef, useState } from 'react';
-import { testQuestion } from '../actions/testQuestion';
-import { EditorRef } from '../components/editor/Editor';
 
 export const EditorContext = createContext<EditorContextType | null>(null);
 

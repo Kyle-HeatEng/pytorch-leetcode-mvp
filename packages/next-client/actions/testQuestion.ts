@@ -1,7 +1,7 @@
 export const testQuestion = async (answer: string) => {
   try {
     const executionResult = await fetch(
-      "http://127.0.0.1:5000/api/pytorch/answer",
+      "http://127.0.0.1:5005/api/pytorch/answer",
       {
         method: "POST",
         headers: {
