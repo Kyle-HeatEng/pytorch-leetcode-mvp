@@ -57,7 +57,7 @@ export const Question = () => {
             </ResizablePanel>
             <ResizableHandle />
             <ResizablePanel defaultSize={25}>
-              <Console output={editorContext.answer} />
+              <Console outputs={editorContext.consoleOutputs} />
             </ResizablePanel>
           </ResizablePanelGroup>
         </ResizablePanel>

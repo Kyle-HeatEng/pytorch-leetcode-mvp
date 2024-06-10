@@ -8,7 +8,7 @@ export type EditorContextType = {
     editorRef: EditorRef;
     defaultValue: string;
     submitAnswer: () => Promise<void>;
-    answer: string;
+    consoleOutputs: string[][];
 };
 
 export const EditorProvider = ({
@@ -17,7 +17,7 @@ export const EditorProvider = ({
   children: React.ReactNode;
 }>) => {
   const editorRef: EditorRef = useRef(null);
-  const [answer, setAnswer] = useState<string>("");
+  const [consoleOutputs, setConsoleOutputs] = useState<string[][]>([]);
 
   //TODO: pass as child to EditorProvider
   const defaultValue = `import torch
@@ -36,11 +36,16 @@ print(result_tensor)`;
 
   const submitAnswer = async () => {
       const editor = await testQuestion(editorRef.current?.getValue() || "");
-      setAnswer(editor.output);
+      setConsoleOutputs(
+        (outputs) =>
+          [...outputs, editor.output.split("\n").filter(Boolean)] 
+      );
   }
 
   return (
-    <EditorContext.Provider value={{ editorRef, defaultValue, submitAnswer, answer }}>
+    <EditorContext.Provider
+      value={{ editorRef, defaultValue, submitAnswer, consoleOutputs }}
+    >
       {children}
     </EditorContext.Provider>
   );
