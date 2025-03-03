@@ -38,7 +38,7 @@ print(result_tensor)`;
       const editor = await testQuestion(editorRef.current?.getValue() || "");
       setConsoleOutputs(
         (outputs) =>
-          [...outputs, editor.output.split("\n").filter(Boolean)] 
+          [...outputs, editor.output?.split("\n").filter(Boolean)].filter(Boolean) 
       );
   }
 

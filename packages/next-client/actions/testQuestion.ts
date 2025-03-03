@@ -1,3 +1,4 @@
+"use server"
 export const testQuestion = async (answer: string) => {
   try {
     const executionResult = await fetch(
@@ -20,7 +21,7 @@ export const testQuestion = async (answer: string) => {
     }
 
     const data = await executionResult.json();
-    console.log(data); // Log the response data to debug
+    
     return data;
   } catch (error) {
     console.error(error);
